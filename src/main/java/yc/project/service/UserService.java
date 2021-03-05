@@ -2,10 +2,9 @@ package yc.project.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import yc.project.model.dto.UserParamDTO;
 import yc.project.model.entity.User;
 import yc.project.model.vo.UserVO;
-
-import java.util.List;
 
 /**
  * user service
@@ -16,6 +15,14 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
     /**
+     * 新增用户
+     *
+     * @param userParamDTO param
+     * @return 主键ID
+     */
+    String saveUser(UserParamDTO userParamDTO);
+
+    /**
      * 分页查询
      *
      * @param page      分页参数
@@ -23,4 +30,5 @@ public interface UserService extends IService<User> {
      * @return  List<UserVO>
      */
     Page<UserVO> pageUser(Page page, String keyword);
+
 }

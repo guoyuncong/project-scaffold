@@ -36,8 +36,8 @@ public class UserController {
      */
     @PostMapping(value = "save")
     public Result saveUser(@RequestBody @Validated(AddGroup.class) UserParamDTO userParamDTO) {
-
-        return Result.ofSuccess();
+        String userId = userService.saveUser(userParamDTO);
+        return Result.ofSuccess(userId);
     }
 
 

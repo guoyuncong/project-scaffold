@@ -29,7 +29,7 @@ public class UserParamDTO {
      * 用户姓名
      */
     @NotBlank(message = "用户姓名不能为空", groups = {AddGroup.class, UpdateGroup.class})
-    private String name;
+    private String username;
 
     /**
      * 用户年龄

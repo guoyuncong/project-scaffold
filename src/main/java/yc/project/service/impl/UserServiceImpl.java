@@ -3,8 +3,9 @@ package yc.project.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import yc.project.convert.UserConvert;
+import yc.project.basic.convert.UserConvert;
 import yc.project.mapper.UserMapper;
+import yc.project.model.dto.UserParamDTO;
 import yc.project.model.entity.User;
 import yc.project.model.vo.UserVO;
 import yc.project.service.UserService;
@@ -19,6 +20,13 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Override
+    public String saveUser(UserParamDTO userParamDTO) {
+        User user = UserConvert.INSTANCE.convert2user(userParamDTO);
+        this.baseMapper.insert(user);
+        return user.getId();
+    }
 
     @Override
     @SuppressWarnings("unchecked")

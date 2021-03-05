@@ -1,7 +1,6 @@
-package yc.project.convert;
+package yc.project.basic.convert;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import yc.project.model.dto.UserParamDTO;
 import yc.project.model.entity.User;
