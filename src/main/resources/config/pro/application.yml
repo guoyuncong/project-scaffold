@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      # 接建立超时时间 单位ms 默认30000
+      connection-timeout: 3000
+      # 空闲连接超时时间 单位ms 最小10000(10s) 默认600000(10min)
+      # 当minimumIdle小于maximumPoolSize时有效
+      # 0 空闲连接永远不会被移除
+      idle-timeout: 30000
+      # 最小空闲连接数，默认值maximumPoolSize。当空闲连接低于该值且总连接数低于maximumPoolSize时，
+      #       HikariCP会立即添加连接来保证一个高效的性能
+      # 但是，HikariCP 不建议配置该值，建议使用默认值，让HikariCP维护一个固定连接数的连接池来保持高效。
+      # minimum-idle:
+      # 最大连接数（包含空闲和正在使用的连接），默认值10.当连接数达到该值时，新的连接申请会被阻塞直到超时
+      maximum-pool-size: 10
+      # 一个连接在连接池中的最长存活时间，正在被使用的链接如果超时会等到关闭后被移除
+      # 最小30000ms (30 seconds). Default: 1800000 (30 minutes)
+      # 0 连接永不超时
+      max-lifetime: 1800000
+      # 测试连接是否可用的查询语句
+      connection-test-query: SELECT 1
+  profiles:
+    include: config
+mybatis-plus:
+  configuration:
+    # 是否将sql打印到控制面板(该配置会将sql语句和查询的结果都打印到控制台)
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
